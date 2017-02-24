@@ -31,6 +31,7 @@ class Deck
   def shuffle
     @cards.shuffle!
   end
+
 end
 
 deck = Deck.new
