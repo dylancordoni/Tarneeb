@@ -1,4 +1,5 @@
 class Card
+
   def initialize(suit, number)
     @suit = suit
     @number = number
@@ -7,4 +8,5 @@ class Card
   def display_card
     "#{@number} of #{@suit}"
   end
+
 end
