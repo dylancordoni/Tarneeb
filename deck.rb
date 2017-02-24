@@ -10,7 +10,7 @@ class Deck
   def create_cards
     cards = []
     suits = ["hearts", "clubs", "diamonds", "spades"]
-    numbers = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+    numbers = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
     suits.each do |suit|
       numbers.each do |number|
         cards << Card.new(suit, number)
@@ -26,8 +26,12 @@ class Deck
     end
     output
   end
+
+  def shuffle
+    @cards.shuffle!
+  end
 end
 
 deck = Deck.new
-
+deck.shuffle
 p deck.display_deck
