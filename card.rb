@@ -3,4 +3,8 @@ class Card
     @suit = suit
     @number = number
   end
+
+  def display_card
+    "#{@number} of #{@suit}"
+  end
 end
