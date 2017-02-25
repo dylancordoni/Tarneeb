@@ -34,7 +34,10 @@ class Game
   end
 
   def deal_cards
-    find_right_of_dealer
+    @deck.each_with_index do |card|
+      if card
+      @players[find_right_of_dealer].hand << card
+    end
   end
 
 end
