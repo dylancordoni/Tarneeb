@@ -1,3 +1,5 @@
 class Card < ActiveRecord::Base
-  # Remember to create a migration!
+  validates :suit, :value, :deck_id, presence: true
+  belongs_to :player
+  belongs_to :deck
 end
