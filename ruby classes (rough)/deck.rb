@@ -1,12 +1,12 @@
-require_relative 'card'
-
 class Deck
 
-  def initialize
+  belongs_to :game
 
-    @cards = create_cards
+  # def initialize
 
-  end
+  #   @cards = create_cards
+
+  # end
 
   def create_cards
     cards = []

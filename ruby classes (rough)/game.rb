@@ -1,9 +1,12 @@
 class Game
-  def initialize()
-    @players = create_players
-    @deck = Deck.new
-    @score = [0, 0]
-  end
+
+  has_one :deck
+  has_many :cards, through: :deck
+  # def initialize()
+  #   @players = create_players
+  #   @deck = Deck.new
+  #   @score = [0, 0]
+  # end
 
   def create_players
     players = []
