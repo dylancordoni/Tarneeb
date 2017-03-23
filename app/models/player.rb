@@ -1,8 +1,36 @@
 class Player < ActiveRecord::Base #new player gets created with registration
+  include BCrypt
   has_many :rounds
   has_many :games, through: :rounds
   has_many :hands
   has_one :last_card, class_name: Card
+
+  #user auth stuff
+  validates :email, :username, presence: true
+  validates :email, :username, uniqueness: true
+  validate :password_validation
+
+  attr_accessor :input_password
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+  def password_validation
+    if self.input_password.blank?
+      @errors.add(:password, "field missing")
+    end
+  end
+
+  def authenticate(input_password)
+    self.password == input_password
+  end
+  #end user auth stuff
 
   def currentHand #finds current hand during game
     self.hands.last
